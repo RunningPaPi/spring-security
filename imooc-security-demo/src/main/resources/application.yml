@@ -1,0 +1,22 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/security-demo?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf8&useSSL=false
+    username: root
+    password: root
+  session:
+    store-type: none
+#  http:
+#    encoding:
+#      force: true  
+#      charset: UTF-8
+#      enabled: true
+#解决乱码问题
+#server:
+#  tomcat:
+#    uri-encoding: UTF-8
+#security:
+#  basic:
+#    enabled: false
+    
+
