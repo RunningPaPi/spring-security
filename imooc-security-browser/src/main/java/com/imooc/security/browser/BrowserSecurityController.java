@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.web.DefaultRedirectStrategy;
 import org.springframework.security.web.RedirectStrategy;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.imooc.security.browser.support.SimpleResponse;
+import com.imooc.security.core.properties.SecurityProperties;
 
 @RestController
 public class BrowserSecurityController {
@@ -28,6 +30,9 @@ public class BrowserSecurityController {
 	private RequestCache requestCache = new HttpSessionRequestCache();
 
 	private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
+	
+	@Autowired
+	private SecurityProperties securityProperties;
 
 	@RequestMapping("/authentication/require")
 	@ResponseStatus(code = HttpStatus.UNAUTHORIZED)
@@ -38,8 +43,8 @@ public class BrowserSecurityController {
 		if (savedRequest != null) {
 			String targeturl = savedRequest.getRedirectUrl();
 			log.info("引发跳转的请求是：{}", targeturl);
-			if (StringUtils.endsWith(targeturl, ".html")) {
-				redirectStrategy.sendRedirect(request, response, "");
+			if (StringUtils.endsWithIgnoreCase(targeturl, ".html")) {
+				redirectStrategy.sendRedirect(request, response, securityProperties.getBrowser().getLoginPage());
 			}
 		}
 
