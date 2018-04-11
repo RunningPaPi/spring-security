@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.imooc.security.browser.support.SimpleResponse;
+
 @RestController
 public class BrowserSecurityController {
 
@@ -27,9 +29,9 @@ public class BrowserSecurityController {
 
 	private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
 
-	@RequestMapping()
+	@RequestMapping("/authentication/require")
 	@ResponseStatus(code = HttpStatus.UNAUTHORIZED)
-	public String requiredAuthentication(HttpServletRequest request, HttpServletResponse response) throws IOException {
+	public SimpleResponse requiredAuthentication(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
 		SavedRequest savedRequest = requestCache.getRequest(request, response);
 
@@ -41,6 +43,6 @@ public class BrowserSecurityController {
 			}
 		}
 
-		return null;
+		return new SimpleResponse("访问的服务需要身份认证，请引导用户到登陆页面");
 	}
 }
