@@ -7,10 +7,6 @@ spring:
   session:
     store-type: none
 
-#imooc:
-#  security:
-#    browser:
-#      loginPage: /demo-signIn.html
 #  http:
 #    encoding:
 #      force: true  
@@ -23,5 +19,12 @@ spring:
 #security:
 #  basic:
 #    enabled: false
+
+
+#imooc:
+#  security:
+#    browser:
+#      loginType: REDIRECT
+#      loginPage: /demo-signIn.html
     
 
