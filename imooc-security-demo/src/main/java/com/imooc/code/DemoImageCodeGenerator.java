@@ -6,7 +6,7 @@ import org.springframework.web.context.request.ServletWebRequest;
 import com.imooc.security.core.validate.code.ImageCode;
 import com.imooc.security.core.validate.code.ValidateCodeGenerator;
 
-@Component("imageCodeGenerator")
+//@Component("imageCodeGenerator")
 public class DemoImageCodeGenerator implements ValidateCodeGenerator {
 /**
  * 高级开发人员必须掌握 的技巧

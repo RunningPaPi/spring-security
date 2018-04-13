@@ -5,7 +5,6 @@ package com.imooc.security.core.validate.code;
 
 import java.awt.image.BufferedImage;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 /**
  * @author Caesar
