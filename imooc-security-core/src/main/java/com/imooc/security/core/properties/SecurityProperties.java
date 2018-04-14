@@ -8,7 +8,6 @@ public class SecurityProperties {
 
 	private ValidateCodeProperties code = new ValidateCodeProperties();
 	
-	
 	public ValidateCodeProperties getCode() {
 		return code;
 	}
